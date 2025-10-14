@@ -1,6 +1,6 @@
 # Project Structure
 
-This document outlines the current project structure after the Phase 1 refactoring. It should be kept updated as new features and files are added.
+This document outlines the current project structure. It should be kept updated as new features and files are added.
 
 ```
 hero-template
@@ -12,38 +12,37 @@ hero-template
 ├── messages
 ├── public
 ├── src
-│   ├── app
-│   │   └── ...
-│   ├── components
-│   │   └── ...
-│   ├── features
-│   │   ├── products
-│   │   │   ├── components/
-│   │   │   ├── data/
-│   │   │   │   └── product.json
-│   │   │   ├── hooks/
+│   ├── app/
+│   ├── components/
+│   ├── config/
+│   ├── contexts/
+│   ├── features/
+│   │   ├── products/
+│   │   │   ├── data/product.json
 │   │   │   ├── services.ts
 │   │   │   └── types.ts
 │   │   ├── cart/
+│   │   │   └── cartSlice.ts
 │   │   ├── checkout/
 │   │   ├── authentication/
 │   │   └── counter/
 │   │       └── counterSlice.ts
-│   ├── lib
+│   ├── i18n/
+│   ├── lib/
 │   │   ├── api.ts
 │   │   ├── utils.ts
 │   │   └── utils.test.ts
-│   ├── providers
-│   │   └── ...
-│   └── redux
-│       ├── hooks.ts
-│       └── store.ts
-├── styles
-├── tests
+│   ├── providers/
+│   ├── redux/
+│   │   ├── hooks.ts
+│   │   └── store.ts
+│   ├── types/
+│   │   └── index.ts
+│   └── utils/
+│       └── productUtils.ts
+├── styles/
+│   └── globals.css
+├── tests/
 │   └── example.spec.ts
-├── package.json
-├── playwright.config.ts
-├── vitest.config.ts
-├── vitest.setup.ts
 └── ... (other root config files)
 ```

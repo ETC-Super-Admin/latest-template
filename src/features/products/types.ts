@@ -58,8 +58,6 @@ export interface Size {
 }
 
 export interface Details {
-  id: number;
-  productId: number;
   images: Image[];
   colors: Color[];
   sizes: Size[];
@@ -111,17 +109,18 @@ export interface Badge {
 
 export interface Product {
   id: number;
-  organizeId: string;
+  organizeId: number;
   imageCoverPath: string | null;
   productId: string;
   basePrice: number;
   salePrice: number;
   size: string;
   sizeUnitId: string;
-  packgageId: string;
-  inPackAmount: number; // Add inPackAmount field
-  inPackAmountTypes: {
-    name: string; // Add inPackAmountTypes with name field
+  packgageId?: string; // Made optional
+  inPackAmount: number;
+  inPackAmountTypes?: {
+    // Made optional
+    name: string;
   } | null;
   inPackAmountTypeId: string;
   stock: number | null;
@@ -131,15 +130,16 @@ export interface Product {
   updatedAt: string;
   details: Details;
   productNames: ProductName[];
-  organize: Organize; // Updated to support a single Organize object
-  categories: Category[]; // Add categories field
-  tags: Tag[]; // Add tags field
-  packgages: Packgage[]; // Add packgages field
-  sizeUnit: {
-    unit: string; // Add sizeUnit with unit field
+  organize: Organize;
+  categories: Category[];
+  tags: Tag[];
+  packgages: Packgage[];
+  sizeUnit?: {
+    // Made optional
+    unit: string;
   } | null;
-  classifications?: Classification[]; // Add classifications field as optional
-  badge?: Badge; // Add badge field as optional
+  classifications?: Classification[];
+  badge?: Badge;
 }
 
 export interface PageCursor {

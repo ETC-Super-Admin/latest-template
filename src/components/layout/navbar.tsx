@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -10,9 +12,13 @@ import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { Plane } from "lucide-react";
+import { Plane, ShoppingCart } from "lucide-react";
+import useCartStore from "@/features/cart/store";
 
 export const Navbar = () => {
+  const items = useCartStore((state) => state.items);
+  const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
+
   return (
     <HeroUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
@@ -45,6 +51,14 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
+          <NextLink href="/cart" className="relative">
+            <ShoppingCart size={24} />
+            {totalItems > 0 && (
+              <span className="absolute -top-1 -right-2 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full">
+                {totalItems}
+              </span>
+            )}
+          </NextLink>
           <ThemeSwitch />
         </NavbarItem>
       </NavbarContent>

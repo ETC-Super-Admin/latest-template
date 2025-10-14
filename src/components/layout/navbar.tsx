@@ -1,10 +1,14 @@
 "use client";
 
+import React from "react";
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
   NavbarBrand,
   NavbarItem,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
 } from "@heroui/navbar";
 import { link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
@@ -17,12 +21,17 @@ import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
 
 export const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const items = useAppSelector((state: RootState) => state.cart.items);
   const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <HeroUINavbar maxWidth="xl" position="sticky">
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
+    <HeroUINavbar
+      maxWidth="full"
+      position="sticky"
+      onMenuOpenChange={setIsMenuOpen}
+    >
+      <NavbarContent justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-2" href="/">
             <Plane className="text-primary" />
@@ -47,11 +56,8 @@ export const Navbar = () => {
         </ul>
       </NavbarContent>
 
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
-        <NavbarItem className="hidden sm:flex gap-2">
+      <NavbarContent justify="end">
+        <NavbarItem className="flex items-center gap-4">
           <NextLink href="/cart" className="relative">
             <ShoppingCart size={24} />
             {totalItems > 0 && (
@@ -62,11 +68,21 @@ export const Navbar = () => {
           </NextLink>
           <ThemeSwitch />
         </NavbarItem>
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="lg:hidden"
+        />
       </NavbarContent>
 
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <ThemeSwitch />
-      </NavbarContent>
+      <NavbarMenu>
+        {siteConfig.navMenuItems.map((item, index) => (
+          <NavbarMenuItem key={`${item}-${index}`}>
+            <NextLink color="foreground" href={item.href}>
+              {item.label}
+            </NextLink>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
     </HeroUINavbar>
   );
 };

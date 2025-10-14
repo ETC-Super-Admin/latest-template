@@ -29,9 +29,9 @@ Implement the foundational features that define an e-commerce experience.
 - **Priority:** High
 - **Implementation:**
   - **State Management for Cart:**
-    - Use **Zustand** to manage the shopping cart state. Create a store in `src/features/cart/store.ts`.
-    - The store should handle actions like `addItem`, `removeItem`, `updateItemQuantity`, and `clearCart`.
-    - This state should be client-side and accessible by any component (e.g., `ProductCard`, `Navbar`'s cart icon).
+    - Use **Redux Toolkit** to manage the shopping cart state via a dedicated `cartSlice`.
+    - The slice handles actions like `addItem`, `removeItem`, `updateItemQuantity`, and `clearCart`.
+    - This state is client-side and accessible by any component using `useAppSelector` and `useAppDispatch` hooks.
   - **Server State for Products & Users:**
     - Use **TanStack Query** for all server data: fetching products, categories, user profiles, and order history.
   - **Authentication:**
@@ -52,7 +52,7 @@ A robust testing suite focused on critical e-commerce user flows.
     - Use **Vitest** and **React Testing Library** to test:
       - Utility functions (price formatting, etc.).
       - Individual components (`PriceDisplay`, `ProductCard`).
-      - State logic in the Zustand cart store.
+      - State logic in the Redux cart slice.
   - **End-to-End (E2E) Testing:**
     - Use **Playwright** to create tests for the most critical user journeys:
       1.  **Product Discovery:** Searching for a product and filtering results.

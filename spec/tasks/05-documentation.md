@@ -13,4 +13,4 @@ Tasks related to project and component documentation.
 
 - [ ] Update `README.md` with a comprehensive overview of the new e-commerce architecture.
 - [ ] Add detailed instructions on how to run all new scripts (testing, e2e, storybook).
-- [ ] Create a `docs/state-management.md` file explaining the roles of TanStack Query and Zustand in the project.
+- [ ] Create a `docs/state-management.md` file explaining the roles of TanStack Query and Redux in the project.

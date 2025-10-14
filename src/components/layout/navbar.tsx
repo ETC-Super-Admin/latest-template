@@ -13,10 +13,11 @@ import clsx from "clsx";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Plane, ShoppingCart } from "lucide-react";
-import useCartStore from "@/features/cart/store";
+import { useAppSelector } from "@/redux/hooks";
+import { RootState } from "@/redux/store";
 
 export const Navbar = () => {
-  const items = useCartStore((state) => state.items);
+  const items = useAppSelector((state: RootState) => state.cart.items);
   const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
 
   return (

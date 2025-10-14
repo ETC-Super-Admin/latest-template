@@ -3,5 +3,5 @@
 import React from "react";
 
 export default function HomePage() {
-  return <div className="h-full">main page</div>;
+  return <div className="h-full">main</div>;
 }

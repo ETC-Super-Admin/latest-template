@@ -4,11 +4,10 @@ Tasks for building the core e-commerce features.
 
 ### 4.1: Shopping Cart State
 
-- [ ] Install Zustand: `bun add zustand`.
-- [ ] Create the cart store file at `src/features/cart/store.ts`.
-- [ ] Define the cart state (`items`) and core actions (`addItem`, `removeItem`, `updateItemQuantity`) in the Zustand store.
-- [ ] Create a `useCart` hook for easy access to the store.
-- [ ] Integrate the `useCart` hook into a `ProductCard` component (to add items) and the `Navbar` (to display item count).
+- [x] Create the cart slice file at `src/features/cart/cartSlice.ts`.
+- [x] Define the cart state and reducers (`addItem`, `removeItem`, etc.).
+- [x] Add the cart slice to the main Redux store.
+- [x] Integrate the Redux hooks (`useAppDispatch`, `useAppSelector`) into the `ProductCard` and `Navbar` components.
 
 ### 4.2: Authentication
 

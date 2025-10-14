@@ -51,7 +51,6 @@ A clear distinction is made between **Server State** and **Client State**.
 - **Server State (Remote Data):**
   - **TanStack Query (React Query)** is the industry standard. It handles fetching, caching, revalidation, and optimistic updates of data from APIs. SWR is a viable alternative.
 - **Client State (UI State):**
-  - **Zustand & Jotai:** These have gained massive popularity for their simplicity, minimal boilerplate, and hook-based APIs. They are often preferred over Redux for new projects unless state logic is exceptionally complex.
   - **Redux Toolkit:** Still the go-to for large-scale applications with complex, interdependent client state. Its robust ecosystem and devtools are major advantages.
   - **React Context:** Used sparingly for low-frequency global state like theme information or authentication status.
 
